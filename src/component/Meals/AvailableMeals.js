@@ -2,37 +2,60 @@ import styles from "./AvailableMeals.module.css";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 import { useEffect, useState } from "react";
-// const DUMMY_MEALS = [
-// {
-//   id: "m1",
-//   name: "Sushi",
-//   description: "Finest fish and veggies",
-//   price: 22.99,
-// },
-// {
-//   id: "m2",
-//   name: "Schnitzel",
-//   description: "A german specialty!",
-//   price: 16.5,
-// },
-// {
-//   id: "m3",
-//   name: "Barbecue Burger",
-//   description: "American, raw, meaty",
-//   price: 12.99,
-// },
-// {
-//   id: "m4",
-//   name: "Green Bowl",
-//   description: "Healthy...and green...",
-//   price: 18.99,
-// },
-// ];
+const DUMMY_MEALS = [
+  {
+    id: "m1",
+    name: "Sushi",
+    description: "Finest fish and veggies",
+    price: 22.99,
+    averageCookingTime: 30,
+  },
+  {
+    id: "m2",
+    name: "Schnitzel",
+    description: "A german specialty!",
+    price: 16.5,
+    averageCookingTime: 40,
+  },
+  {
+    id: "m3",
+    name: "Barbecue Burger",
+    description: "American, raw, meaty",
+    price: 12.99,
+    averageCookingTime: 50,
+  },
+  {
+    id: "m4",
+    name: "Green Bowl",
+    description: "Healthy...and green...",
+    price: 18.99,
+    averageCookingTime: 20,
+  },
+];
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
+
+  // one time code
+  useEffect(() => {
+    const postMeals = async () => {
+      try {
+        fetch(
+          "https://react-first-38e92-default-rtdb.firebaseio.com/meals.json",
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(DUMMY_MEALS),
+          }
+        );
+      } catch (err) {
+        setHttpError("error on posting current Meals");
+      }
+    };
+    postMeals();
+  });
   useEffect(() => {
     const fetchMeals = async () => {
       try {
