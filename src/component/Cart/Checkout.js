@@ -3,39 +3,41 @@ import classes from "./Checkout.module.css";
 
 const isEmpty = (value) => value.trim() === "";
 const is2Chars = (value) => value.trim().length > 1;
+const is10Chars = (value) => value.trim().length === 10;
 
 const Checkout = (props) => {
   const [formInputsValidity, setFormInputsValidity] = useState({
     name: true,
     id: true,
-    city: true,
+    phoneNumber: true,
     blockNumber: true,
   });
   const nameInputRef = useRef();
   const idInputRef = useRef();
   const blockNumberInputRef = useRef();
-  const cityInputRef = useRef();
+  const phoneNumberInputRef = useRef();
 
   const confirmHandler = (event) => {
     event.preventDefault();
     const enteredName = nameInputRef.current.value;
     const enteredId = idInputRef.current.value;
     const enteredBlockNumber = blockNumberInputRef.current.value;
-    const enteredCity = cityInputRef.current.value;
+    const enteredPhoneNumber = phoneNumberInputRef.current.value;
+
     const enteredNameIsValid = !isEmpty(enteredName);
-    const enteredIdIsValid = !isEmpty(enteredId);
-    const enteredCityIsValid = !isEmpty(enteredCity);
+    const enteredIdIsValid = !is10Chars(enteredId);
+    const enteredPhoneNumberIsValid = !is10Chars(enteredPhoneNumber);
     const enteredBlockNumberIsValid = is2Chars(enteredBlockNumber);
 
     const formIsValid =
       enteredNameIsValid &&
-      enteredCityIsValid &&
+      enteredPhoneNumberIsValid &&
       enteredBlockNumberIsValid &&
       enteredIdIsValid;
     setFormInputsValidity({
       name: enteredNameIsValid,
       id: enteredIdIsValid,
-      city: enteredCityIsValid,
+      phoneNumber: enteredPhoneNumberIsValid,
       blockNumber: enteredBlockNumberIsValid,
     });
     if (!formIsValid) {
@@ -44,7 +46,7 @@ const Checkout = (props) => {
     props.onConfirm({
       name: enteredName,
       id: enteredId,
-      city: enteredCity,
+      phoneNumber: enteredPhoneNumber,
       blockNumber: enteredBlockNumber,
     });
   };
@@ -58,8 +60,8 @@ const Checkout = (props) => {
   const blockNumberInputClass = `${classes.control} ${
     formInputsValidity.blockNumber ? "" : classes.invalid
   }`;
-  const cityInputClass = `${classes.control} ${
-    formInputsValidity.city ? "" : classes.invalid
+  const phoneNumberInputClass = `${classes.control} ${
+    formInputsValidity.phoneNumber ? "" : classes.invalid
   }`;
 
   return (
@@ -92,11 +94,16 @@ const Checkout = (props) => {
           <p className="invalid-message">Please enter a valid Block Number!</p>
         )}
       </div>
-      <div className={cityInputClass}>
-        <label htmlFor="city">Phone Number</label>
-        <input type="text" id="city" placeholder="09..." ref={cityInputRef} />
-        {!formInputsValidity.city && (
-          <p className="invalid-message">Please enter a valid City</p>
+      <div className={phoneNumberInputClass}>
+        <label htmlFor="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          placeholder="09..."
+          ref={phoneNumberInputRef}
+        />
+        {!formInputsValidity.phoneNumber && (
+          <p className="invalid-message">Please enter a valid PhoneNumber</p>
         )}
       </div>
       <div className={classes.actions}>
