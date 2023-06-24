@@ -25,8 +25,8 @@ const Checkout = (props) => {
     const enteredPhoneNumber = phoneNumberInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
-    const enteredIdIsValid = !is10Chars(enteredId);
-    const enteredPhoneNumberIsValid = !is10Chars(enteredPhoneNumber);
+    const enteredIdIsValid = is10Chars(enteredId);
+    const enteredPhoneNumberIsValid = is10Chars(enteredPhoneNumber);
     const enteredBlockNumberIsValid = is2Chars(enteredBlockNumber);
 
     const formIsValid =
