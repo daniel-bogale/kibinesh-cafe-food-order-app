@@ -77,7 +77,7 @@ const Checkout = (props) => {
       </div>
       <div className={idInputClass}>
         <label htmlFor="id">Id Number</label>
-        <input type="text" id="id" placeholder="ETS-1234/12" ref={idInputRef} />
+        <input type="text" id="id" placeholder="ETS1234/12" ref={idInputRef} />
         {!formInputsValidity.id && (
           <p className="invalid-message">Please enter a valid id!</p>
         )}
