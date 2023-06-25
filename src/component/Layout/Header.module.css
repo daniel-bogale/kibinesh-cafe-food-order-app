@@ -4,9 +4,8 @@
   left: 0;
   width: 100%;
   height: 5rem;
-  background-color: #8a2b06;
+  background-color: #8a2b0682;
   backdrop-filter: blur(1px);
-
   color: white;
   display: flex;
   justify-content: space-between;

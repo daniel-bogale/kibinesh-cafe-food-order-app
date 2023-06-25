@@ -35,12 +35,18 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
+    const time = Number(new Date());
+
     try {
       const response = await fetch(
         "https://react-first-38e92-default-rtdb.firebaseio.com/orders.json",
         {
           method: "POST",
-          body: JSON.stringify({ user: userData, orderedItems: cartCtx.items }),
+          body: JSON.stringify({
+            user: userData,
+            orderedItems: cartCtx.items,
+            time: time,
+          }),
         }
       );
       if (!response.ok) {
@@ -103,7 +109,10 @@ const Cart = (props) => {
     <>
       <div className={styles.successful}>
         <CheckSvg />
-        <p>Successfully sent the order!</p>
+        <p>
+          Successfully sent the order! your order will approximately serve to
+          you in 50 minute
+        </p>
       </div>
       <div className={styles.actions}>
         <button className={styles["button--alt"]} onClick={props.onToggleCart}>
