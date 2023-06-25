@@ -109,6 +109,7 @@ const Cart = (props) => {
     <>
       <div className={styles.successful}>
         <CheckSvg />
+        {/* add time calculation */}
         <p>
           Successfully sent the order! your order will approximately serve to
           you in 50 minute
