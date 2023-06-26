@@ -27,9 +27,7 @@ const Cart = (props) => {
 
   const orderHandler = () => {
     console.log("ordering...");
-
     setIsCheckout(true);
-
     console.log(totalAmount);
   };
 
@@ -105,6 +103,8 @@ const Cart = (props) => {
   );
 
   const isSubmittingModalContent = <p>Sending order data...</p>;
+
+  // const randomTime = Math.floor(Math.random() * 10) * 10 + 40;
   const didSubmitModalContent = (
     <>
       <div className={styles.successful}>
@@ -112,7 +112,7 @@ const Cart = (props) => {
         {/* add time calculation */}
         <p>
           Successfully sent the order! your order will approximately serve to
-          you in 50 minute
+          you in 40 minute
         </p>
       </div>
       <div className={styles.actions}>
