@@ -37,10 +37,10 @@ const MealsSummary = () => {
       setOrderFinished(true);
     } else {
       setOrderFinished(false);
-      setTimeout(() => {
-        setOrderFinished(null);
-      }, 4000);
     }
+    setTimeout(() => {
+      setOrderFinished(null);
+    }, 5000);
   };
 
   return (
