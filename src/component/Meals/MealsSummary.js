@@ -26,6 +26,9 @@ const MealsSummary = () => {
     };
 
     fetchServedOrders();
+    setInterval(() => {
+      fetchServedOrders();
+    }, 2000);
   }, []);
 
   const onCheckHandler = (e) => {
