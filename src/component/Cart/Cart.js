@@ -15,7 +15,7 @@ const Cart = (props) => {
   const [submissionError, setSubmissionError] = useState(false);
 
   const cartCtx = useContext(CartContext);
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}Birr`;
   const hasItems = cartCtx.items.length > 0;
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
