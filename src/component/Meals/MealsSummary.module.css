@@ -30,7 +30,6 @@
   border-radius: 4px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-
   width: 15rem;
   max-width: 100%;
   height: 100%;
@@ -41,7 +40,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
 }
 .button {
   border: 1px solid #5a1a01c5;
@@ -60,18 +58,3 @@
 .button:active {
   background-color: #5a1a01;
 }
-
-/* .invalid label {
-  color: #ca3e51;
-} */
-
-/* .invalid input {
-  border-color: #aa0b20;
-  background-color: #ffeff1;
-}
-
-.invalid p {
-  color: black;
-  font-size: small;
-  margin-top: 0;
-} */
