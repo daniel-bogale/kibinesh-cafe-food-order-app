@@ -6,6 +6,8 @@ import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import CheckSvg from "../../assets/CheckSvg";
 
+const randomId = Math.floor(Math.random() * 10000);
+
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,6 +43,7 @@ const Cart = (props) => {
         {
           method: "POST",
           body: JSON.stringify({
+            key: randomId,
             user: userData,
             orderedItems: cartCtx.items,
             time: time,
@@ -104,7 +107,6 @@ const Cart = (props) => {
 
   const isSubmittingModalContent = <p>Sending order data...</p>;
 
-  // const randomTime = Math.floor(Math.random() * 10) * 10 + 40;
   const didSubmitModalContent = (
     <>
       <div className={styles.successful}>
@@ -112,9 +114,15 @@ const Cart = (props) => {
         {/* add time calculation */}
         <p>
           Successfully sent the order! your order will approximately serve to
-          you in 40 minute
+          you in Average time of 40 minute
         </p>
       </div>
+      <div className={styles.successful}>
+        <CheckSvg />
+        {/* add time calculation */}
+        <p> your Id is {randomId}</p>
+      </div>
+
       <div className={styles.actions}>
         <button className={styles["button--alt"]} onClick={props.onToggleCart}>
           Close
